@@ -16,10 +16,9 @@ public class MyReactPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(
             ReactApplicationContext reactContext) {
-        List<NativeModule> modules = new ArrayList<>();
-
-
-        return modules;
+        return Arrays.asList(new NativeModule[]{
+                new BDVideoMoudle(reactContext),
+        });
     }
 
     @Override
@@ -32,7 +31,7 @@ public class MyReactPackage implements ReactPackage {
     public List<ViewManager> createViewManagers(
             ReactApplicationContext reactContext) {
         return Arrays.<ViewManager>asList(
-                new ReactTXCloudVideoViewManager()
+                new BDdVideoViewManager()
         );
     }
 

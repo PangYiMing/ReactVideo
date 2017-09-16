@@ -2,7 +2,7 @@
  * Created by Auser on 2017/5/4.
  */
 
-import React, {Component} from 'react';
+import React, {Component} from "react";
 import {
   AppRegistry,
   StyleSheet,
@@ -12,13 +12,25 @@ import {
   TouchableOpacity,
   Image,
   ToastAndroid,
-} from 'react-native';
+  NativeModules,
+  FlatList,
+} from "react-native";
+import BDdVideoViewManager from "./BDdVideoViewManager";
 
-import RCTTXCloudVideoView from './RCTTXCloudVideoView';
 
 var video_url = "http://101.201.68.107/热血沸腾!_国外跑酷玩家超能集锦!_标清.mp4";
 
 export default class TXVIDEODemo extends Component {
+  componentDidMount(){
+    this.timer = setTimeout(() => {
+      NativeModules.BDVideoMoudle.pause()
+    }, 10000);
+  }
+//      clearTimeout(this.timer);
+  componentWillUnmount(){
+    clearTimeout(this.timer);
+    NativeModules.BDVideoMoudle.release()
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -26,15 +38,15 @@ export default class TXVIDEODemo extends Component {
           width: '100%', height: 50, borderWidth: 2, borderColor: '#f00',
           justifyContent: 'center', alignItems: 'center',
         }}>
-          <Text style={{textAlign: 'center',}}>腾讯云点播测试</Text>
+          <Text style={{textAlign: 'center',}}>百度视频测试</Text>
         </View>
 
-
-        <RCTTXCloudVideoView
+        <BDdVideoViewManager
           url={video_url}
-          style={{width: '100%', height: '50%'}}>
-        </RCTTXCloudVideoView>
-        <Text style={{color: '#fff', marginTop: -20}}>sssssssssssssssssssssssssssssssss</Text>
+          style={{width: '100%', height: '30%'}}>
+        </BDdVideoViewManager>
+
+
 
       </View>
     );

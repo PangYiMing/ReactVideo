@@ -4,19 +4,21 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
   View
 } from 'react-native';
-import TXVIDEODemo from './a_0001_TXVIDEODemo';
+import TXVIDEODemo from './Demo';
+import TestInupt from './TestInupt';
 
 export default class ReactVideo extends Component {
   render() {
     return (
       <TXVIDEODemo />
+      // <TestInupt/>
     );
   }
 }
