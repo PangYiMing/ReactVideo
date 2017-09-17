@@ -4,14 +4,20 @@
  * react-native-cli: 2.0.1
  */
 
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 import { requireNativeComponent, View } from 'react-native';
 
 var iface = {
     name: 'BDdVideoViewManager',
     propTypes: {
+        setCurrent: PropTypes.number,
         url: PropTypes.string,
         setVideoScalingMode: PropTypes.number,
+        start: PropTypes.number,
+        pause: PropTypes.number,
+        release: PropTypes.number,
+        seekTo: PropTypes.number,
+        reSetRender: PropTypes.number,
         ...View.propTypes // include the default view properties
     },
 };

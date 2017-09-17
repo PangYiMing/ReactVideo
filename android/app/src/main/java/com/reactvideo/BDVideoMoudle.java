@@ -1,6 +1,7 @@
 package com.reactvideo;
 
 
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -46,24 +47,6 @@ public class BDVideoMoudle extends ReactContextBaseJavaModule {
     }
 
     /**
-     * 获得视频时长，单位为毫秒！
-     * @return
-     */
-    @ReactMethod
-    public void getDuration() {
-        BDdVideoViewManager.getInstance().getDuration();
-    }
-
-    /**
-     * 获取当前播放进度，单位为毫秒！
-     * @return
-     */
-    @ReactMethod
-    public void getCurrentPosition() {
-        BDdVideoViewManager.getInstance().getDuration();
-    }
-
-    /**
      * 将播放器指定到某个播放位置
      */
     @ReactMethod
@@ -72,30 +55,39 @@ public class BDVideoMoudle extends ReactContextBaseJavaModule {
     }
 
     /**
-     * 获取视频宽度
+     * 获得视频时长，单位为毫秒！
      * @return
      */
     @ReactMethod
-    public void getVideoHeight() {
-        BDdVideoViewManager.getInstance().getVideoHeight();
+    public void getDuration(Callback successCallback) {
+        successCallback.invoke(BDdVideoViewManager.getInstance().getDuration());
     }
 
     /**
-     * 获取视频宽度
+     * 获取当前播放进度，单位为毫秒！
      * @return
      */
     @ReactMethod
-    public void getVideoWidth() {
-        BDdVideoViewManager.getInstance().getVideoWidth();
+    public void getCurrentPosition(Callback successCallback) {
+        successCallback.invoke(BDdVideoViewManager.getInstance().getCurrentPosition());
     }
 
     /**
-     * 获取视频宽度
+     * 获取视频宽度,高度
      * @return
      */
     @ReactMethod
-    public void getVariantInfo() {
-        BDdVideoViewManager.getInstance().getVariantInfo();
+    public void getVideoLayout(Callback successCallback) {
+        successCallback.invoke(BDdVideoViewManager.getInstance().getVideoWidth(),BDdVideoViewManager.getInstance().getVideoHeight());
+    }
+
+    /**
+     * 当前视频是否在播放
+     * @return
+     */
+    @ReactMethod
+    public void isPlaying(Callback successCallback) {
+        successCallback.invoke(BDdVideoViewManager.getInstance().isPlaying());
     }
 
 
