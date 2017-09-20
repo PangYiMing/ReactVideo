@@ -12,17 +12,17 @@ import {
   View
 } from 'react-native';
 import TXVIDEODemo from './Demo';
-import TestInupt from './TestInupt';
+import Demo2 from './Demo2';
 
 export default class ReactVideo extends Component {
   render() {
     return (
-      <TXVIDEODemo />
-      // <TestInupt/>
+
+      <Demo2/>
     );
   }
 }
-
+{/*<TXVIDEODemo />*/}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
